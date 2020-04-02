@@ -3,7 +3,6 @@ package com.techyourchance.mvc.screens.common.dialogs.infodialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.TextView;
@@ -16,6 +15,9 @@ public class InfoDialog extends BaseDialog {
     protected static final String ARG_TITLE = "ARG_TITLE";
     protected static final String ARG_MESSAGE = "ARG_MESSAGE";
     protected static final String ARG_BUTTON_CAPTION = "ARG_BUTTON_CAPTION";
+    private TextView mTxtTitle;
+    private TextView mTxtMessage;
+    private AppCompatButton mBtnPositive;
 
     public static InfoDialog newInfoDialog(String title, String message, String buttonCaption) {
         InfoDialog infoDialog = new InfoDialog();
@@ -26,10 +28,6 @@ public class InfoDialog extends BaseDialog {
         infoDialog.setArguments(args);
         return infoDialog;
     }
-
-    private TextView mTxtTitle;
-    private TextView mTxtMessage;
-    private AppCompatButton mBtnPositive;
 
     @NonNull
     @Override

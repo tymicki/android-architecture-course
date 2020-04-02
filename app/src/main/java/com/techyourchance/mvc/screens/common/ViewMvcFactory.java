@@ -12,10 +12,10 @@ import com.techyourchance.mvc.screens.common.navdrawer.NavDrawerViewMvcImpl;
 import com.techyourchance.mvc.screens.common.toolbar.ToolbarViewMvc;
 import com.techyourchance.mvc.screens.questiondetails.QuestionDetailsViewMvc;
 import com.techyourchance.mvc.screens.questiondetails.QuestionDetailsViewMvcImpl;
-import com.techyourchance.mvc.screens.questionslist.questionslistitem.QuestionsListItemViewMvc;
-import com.techyourchance.mvc.screens.questionslist.questionslistitem.QuestionsListItemViewMvcImpl;
 import com.techyourchance.mvc.screens.questionslist.QuestionsListViewMvc;
 import com.techyourchance.mvc.screens.questionslist.QuestionsListViewMvcImpl;
+import com.techyourchance.mvc.screens.questionslist.questionslistitem.QuestionsListItemViewMvc;
+import com.techyourchance.mvc.screens.questionslist.questionslistitem.QuestionsListItemViewMvcImpl;
 
 public class ViewMvcFactory {
 

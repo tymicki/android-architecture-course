@@ -2,9 +2,9 @@ package com.techyourchance.mvc.questions;
 
 import com.techyourchance.mvc.common.BaseObservable;
 import com.techyourchance.mvc.common.Constants;
+import com.techyourchance.mvc.networking.StackoverflowApi;
 import com.techyourchance.mvc.networking.questions.QuestionSchema;
 import com.techyourchance.mvc.networking.questions.QuestionsListResponseSchema;
-import com.techyourchance.mvc.networking.StackoverflowApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +14,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FetchLastActiveQuestionsUseCase extends BaseObservable<FetchLastActiveQuestionsUseCase.Listener> {
-
-    public interface Listener {
-        void onLastActiveQuestionsFetched(List<Question> questions);
-        void onLastActiveQuestionsFetchFailed();
-    }
 
     private final StackoverflowApi mStackoverflowApi;
 
@@ -42,7 +37,7 @@ public class FetchLastActiveQuestionsUseCase extends BaseObservable<FetchLastAct
                     public void onFailure(Call<QuestionsListResponseSchema> call, Throwable t) {
                         notifyFailure();
                     }
-                } );
+                });
     }
 
     private void notifyFailure() {
@@ -59,5 +54,11 @@ public class FetchLastActiveQuestionsUseCase extends BaseObservable<FetchLastAct
         for (Listener listener : getListeners()) {
             listener.onLastActiveQuestionsFetched(questions);
         }
+    }
+
+    public interface Listener {
+        void onLastActiveQuestionsFetched(List<Question> questions);
+
+        void onLastActiveQuestionsFetchFailed();
     }
 }

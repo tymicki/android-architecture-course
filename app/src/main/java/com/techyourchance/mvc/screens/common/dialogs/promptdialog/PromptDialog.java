@@ -4,11 +4,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatButton;
-import android.view.View;
-import android.widget.TextView;
 
-import com.techyourchance.mvc.R;
 import com.techyourchance.mvc.screens.common.dialogs.BaseDialog;
 import com.techyourchance.mvc.screens.common.dialogs.DialogsEventBus;
 
@@ -18,6 +14,8 @@ public class PromptDialog extends BaseDialog implements PromptViewMvc.Listener {
     protected static final String ARG_MESSAGE = "ARG_MESSAGE";
     protected static final String ARG_POSITIVE_BUTTON_CAPTION = "ARG_POSITIVE_BUTTON_CAPTION";
     protected static final String ARG_NEGATIVE_BUTTON_CAPTION = "ARG_NEGATIVE_BUTTON_CAPTION";
+    private DialogsEventBus mDialogsEventBus;
+    private PromptViewMvc mViewMvc;
 
     public static PromptDialog newPromptDialog(String title, String message, String positiveButtonCaption, String negativeButtonCaption) {
         PromptDialog promptDialog = new PromptDialog();
@@ -29,9 +27,6 @@ public class PromptDialog extends BaseDialog implements PromptViewMvc.Listener {
         promptDialog.setArguments(args);
         return promptDialog;
     }
-
-    private DialogsEventBus mDialogsEventBus;
-    private PromptViewMvc mViewMvc;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

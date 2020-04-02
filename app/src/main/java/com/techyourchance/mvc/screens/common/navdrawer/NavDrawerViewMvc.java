@@ -6,15 +6,17 @@ import com.techyourchance.mvc.screens.common.views.ObservableViewMvc;
 
 public interface NavDrawerViewMvc extends ObservableViewMvc<NavDrawerViewMvc.Listener> {
 
+    FrameLayout getFragmentFrame();
+
+    boolean isDrawerOpen();
+
+    void openDrawer();
+
+    void closeDrawer();
+
     interface Listener {
 
         void onQuestionsListClicked();
     }
-
-    FrameLayout getFragmentFrame();
-
-    boolean isDrawerOpen();
-    void openDrawer();
-    void closeDrawer();
 
 }

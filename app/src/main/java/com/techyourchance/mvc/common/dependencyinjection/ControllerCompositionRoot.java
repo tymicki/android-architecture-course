@@ -8,15 +8,15 @@ import android.view.LayoutInflater;
 import com.techyourchance.mvc.networking.StackoverflowApi;
 import com.techyourchance.mvc.questions.FetchLastActiveQuestionsUseCase;
 import com.techyourchance.mvc.questions.FetchQuestionDetailsUseCase;
+import com.techyourchance.mvc.screens.common.ViewMvcFactory;
 import com.techyourchance.mvc.screens.common.controllers.BackPressDispatcher;
 import com.techyourchance.mvc.screens.common.dialogs.DialogsEventBus;
 import com.techyourchance.mvc.screens.common.dialogs.DialogsManager;
 import com.techyourchance.mvc.screens.common.fragmentframehelper.FragmentFrameHelper;
 import com.techyourchance.mvc.screens.common.fragmentframehelper.FragmentFrameWrapper;
 import com.techyourchance.mvc.screens.common.navdrawer.NavDrawerHelper;
-import com.techyourchance.mvc.screens.common.toastshelper.ToastsHelper;
 import com.techyourchance.mvc.screens.common.screensnavigator.ScreensNavigator;
-import com.techyourchance.mvc.screens.common.ViewMvcFactory;
+import com.techyourchance.mvc.screens.common.toastshelper.ToastsHelper;
 import com.techyourchance.mvc.screens.questionslist.QuestionsListController;
 
 public class ControllerCompositionRoot {
@@ -61,7 +61,7 @@ public class ControllerCompositionRoot {
         return new FetchQuestionDetailsUseCase(getStackoverflowApi());
     }
 
-    public FetchLastActiveQuestionsUseCase getFetchLastActiveQuestionsUseCase() {
+    private FetchLastActiveQuestionsUseCase getFetchLastActiveQuestionsUseCase() {
         return new FetchLastActiveQuestionsUseCase(getStackoverflowApi());
     }
 

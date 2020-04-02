@@ -1,20 +1,15 @@
 package com.techyourchance.mvc.questions;
 
 import com.techyourchance.mvc.common.BaseObservable;
+import com.techyourchance.mvc.networking.StackoverflowApi;
 import com.techyourchance.mvc.networking.questions.QuestionDetailsResponseSchema;
 import com.techyourchance.mvc.networking.questions.QuestionSchema;
-import com.techyourchance.mvc.networking.StackoverflowApi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FetchQuestionDetailsUseCase extends BaseObservable<FetchQuestionDetailsUseCase.Listener> {
-
-    public interface Listener {
-        void onQuestionDetailsFetched(QuestionDetails questionDetails);
-        void onQuestionDetailsFetchFailed();
-    }
 
     private final StackoverflowApi mStackoverflowApi;
 
@@ -56,5 +51,11 @@ public class FetchQuestionDetailsUseCase extends BaseObservable<FetchQuestionDet
                             questionSchema.getBody()
                     ));
         }
+    }
+
+    public interface Listener {
+        void onQuestionDetailsFetched(QuestionDetails questionDetails);
+
+        void onQuestionDetailsFetchFailed();
     }
 }

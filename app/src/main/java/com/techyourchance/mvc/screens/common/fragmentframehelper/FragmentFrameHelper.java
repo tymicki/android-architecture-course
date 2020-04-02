@@ -52,9 +52,9 @@ public class FragmentFrameHelper {
             }
         }
 
-        if (HierarchicalFragment.class.isInstance(currentFragment)) {
+        if (currentFragment instanceof HierarchicalFragment) {
             Fragment parentFragment =
-                    ((HierarchicalFragment)currentFragment).getHierarchicalParentFragment();
+                    ((HierarchicalFragment) currentFragment).getHierarchicalParentFragment();
             if (parentFragment != null) {
                 replaceFragment(parentFragment, false, true);
                 return; // navigate "up" to hierarchical parent fragment

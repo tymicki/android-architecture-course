@@ -5,7 +5,7 @@ import android.support.annotation.StringRes;
 import android.view.View;
 
 public abstract class BaseViewMvc implements ViewMvc {
-    
+
     private View mRootView;
 
     @Override

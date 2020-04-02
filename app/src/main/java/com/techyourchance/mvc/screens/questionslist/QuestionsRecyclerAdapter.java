@@ -14,32 +14,16 @@ import java.util.List;
 public class QuestionsRecyclerAdapter extends RecyclerView.Adapter<QuestionsRecyclerAdapter.MyViewHolder>
         implements QuestionsListItemViewMvc.Listener {
 
-    public interface Listener {
-        void onQuestionClicked(Question question);
-    }
-
-    static class MyViewHolder extends RecyclerView.ViewHolder {
-
-        private final QuestionsListItemViewMvc mViewMvc;
-
-        public MyViewHolder(QuestionsListItemViewMvc viewMvc) {
-            super(viewMvc.getRootView());
-            mViewMvc = viewMvc;
-        }
-
-    }
-
     private final Listener mListener;
     private final ViewMvcFactory mViewMvcFactory;
-
     private List<Question> mQuestions = new ArrayList<>();
 
-    public QuestionsRecyclerAdapter(Listener listener, ViewMvcFactory viewMvcFactory) {
+    QuestionsRecyclerAdapter(Listener listener, ViewMvcFactory viewMvcFactory) {
         mListener = listener;
         mViewMvcFactory = viewMvcFactory;
     }
 
-    public void bindQuestions(List<Question> questions) {
+    void bindQuestions(List<Question> questions) {
         mQuestions = new ArrayList<>(questions);
         notifyDataSetChanged();
     }
@@ -65,6 +49,21 @@ public class QuestionsRecyclerAdapter extends RecyclerView.Adapter<QuestionsRecy
     @Override
     public void onQuestionClicked(Question question) {
         mListener.onQuestionClicked(question);
+    }
+
+    public interface Listener {
+        void onQuestionClicked(Question question);
+    }
+
+    static class MyViewHolder extends RecyclerView.ViewHolder {
+
+        private final QuestionsListItemViewMvc mViewMvc;
+
+        MyViewHolder(QuestionsListItemViewMvc viewMvc) {
+            super(viewMvc.getRootView());
+            mViewMvc = viewMvc;
+        }
+
     }
 
 }

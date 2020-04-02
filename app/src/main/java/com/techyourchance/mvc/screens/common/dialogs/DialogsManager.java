@@ -33,7 +33,8 @@ public class DialogsManager {
         return mContext.getString(stringId);
     }
 
-    public @Nullable String getShownDialogTag() {
+    public @Nullable
+    String getShownDialogTag() {
         for (Fragment fragment : mFragmentManager.getFragments()) {
             if (fragment instanceof BaseDialog) {
                 return fragment.getTag();

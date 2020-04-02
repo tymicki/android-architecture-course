@@ -8,22 +8,12 @@ import android.widget.TextView;
 
 import com.techyourchance.mvc.R;
 import com.techyourchance.mvc.screens.common.views.BaseViewMvc;
-import com.techyourchance.mvc.screens.questiondetails.QuestionDetailsViewMvcImpl;
 
 public class ToolbarViewMvc extends BaseViewMvc {
-
-    public interface NavigateUpClickListener {
-        void onNavigateUpClicked();
-    }
-
-    public interface HamburgerClickListener {
-        void onHamburgerClicked();
-    }
 
     private final TextView mTxtTitle;
     private final ImageButton mBtnBack;
     private final ImageButton mBtnHamburger;
-
     private NavigateUpClickListener mNavigateUpClickListener;
     private HamburgerClickListener mHamburgerClickListener;
 
@@ -64,6 +54,14 @@ public class ToolbarViewMvc extends BaseViewMvc {
         }
         mNavigateUpClickListener = navigateUpClickListener;
         mBtnBack.setVisibility(View.VISIBLE);
+    }
+
+    public interface NavigateUpClickListener {
+        void onNavigateUpClicked();
+    }
+
+    public interface HamburgerClickListener {
+        void onHamburgerClicked();
     }
 
 }

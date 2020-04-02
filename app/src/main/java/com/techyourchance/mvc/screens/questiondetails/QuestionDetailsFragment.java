@@ -25,6 +25,12 @@ public class QuestionDetailsFragment extends BaseFragment implements
     private static final String DIALOG_ID_NETWORK_ERROR = "DIALOG_ID_NETWORK_ERROR";
 
     private static final String SAVED_STATE_SCREEN_STATE = "SAVED_STATE_SCREEN_STATE";
+    private FetchQuestionDetailsUseCase mFetchQuestionDetailsUseCase;
+    private ScreensNavigator mScreensNavigator;
+    private DialogsManager mDialogsManager;
+    private DialogsEventBus mDialogsEventBus;
+    private QuestionDetailsViewMvc mViewMvc;
+    private ScreenState mScreenState = ScreenState.IDLE;
 
     public static QuestionDetailsFragment newInstance(String questionId) {
         Bundle args = new Bundle();
@@ -33,19 +39,6 @@ public class QuestionDetailsFragment extends BaseFragment implements
         fragment.setArguments(args);
         return fragment;
     }
-
-    private enum ScreenState {
-        IDLE, QUESTION_DETAILS_SHOWN, NETWORK_ERROR
-    }
-
-    private FetchQuestionDetailsUseCase mFetchQuestionDetailsUseCase;
-    private ScreensNavigator mScreensNavigator;
-    private DialogsManager mDialogsManager;
-    private DialogsEventBus mDialogsEventBus;
-
-    private QuestionDetailsViewMvc mViewMvc;
-
-    private ScreenState mScreenState = ScreenState.IDLE;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -135,6 +128,10 @@ public class QuestionDetailsFragment extends BaseFragment implements
     @Override
     public void onNavigateUpClicked() {
         mScreensNavigator.navigateUp();
+    }
+
+    private enum ScreenState {
+        IDLE, QUESTION_DETAILS_SHOWN, NETWORK_ERROR
     }
 
 }

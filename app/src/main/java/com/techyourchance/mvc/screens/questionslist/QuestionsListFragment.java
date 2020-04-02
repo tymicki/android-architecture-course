@@ -12,13 +12,12 @@ import com.techyourchance.mvc.screens.common.controllers.BaseFragment;
 
 public class QuestionsListFragment extends BaseFragment {
 
+    private static final String SAVED_STATE_CONTROLLER = "SAVED_STATE_CONTROLLER";
+    private QuestionsListController mQuestionsListController;
+
     public static Fragment newInstance() {
         return new QuestionsListFragment();
     }
-
-    private static final String SAVED_STATE_CONTROLLER = "SAVED_STATE_CONTROLLER";
-
-    private QuestionsListController mQuestionsListController;
 
     @Nullable
     @Override
