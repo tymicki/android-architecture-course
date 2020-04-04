@@ -1,7 +1,6 @@
 package com.techyourchance.mvc.screens.questionslist;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.widget.Toast;
 
 import com.techyourchance.mvc.R;
@@ -18,8 +17,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class QuestionsListActivity extends BaseActivity implements QuestionsListViewMvcImpl.Listener {
 
@@ -31,14 +28,10 @@ public class QuestionsListActivity extends BaseActivity implements QuestionsList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mViewMvc = new QuestionsListViewMvcImpl(LayoutInflater.from(this), null);
+        mViewMvc = getCompositionRoot().getViewMvcFactory().getQuestionsListViewMvc(null);
         mViewMvc.registerListener(this);
 
-        mStackoverflowApi = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(StackoverflowApi.class);
+        mStackoverflowApi = getCompositionRoot().getStackOverflowApi();
 
         setContentView(mViewMvc.getRootView());
     }
