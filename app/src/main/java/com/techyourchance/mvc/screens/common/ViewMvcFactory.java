@@ -7,10 +7,10 @@ import android.view.ViewGroup;
 import com.techyourchance.mvc.screens.common.toolbar.ToolbarViewMvc;
 import com.techyourchance.mvc.screens.questiondetails.QuestionDetailsViewMvc;
 import com.techyourchance.mvc.screens.questiondetails.QuestionDetailsViewMvcImpl;
-import com.techyourchance.mvc.screens.questionslist.questionslistitem.QuestionsListItemViewMvc;
-import com.techyourchance.mvc.screens.questionslist.questionslistitem.QuestionsListItemViewMvcImpl;
 import com.techyourchance.mvc.screens.questionslist.QuestionsListViewMvc;
 import com.techyourchance.mvc.screens.questionslist.QuestionsListViewMvcImpl;
+import com.techyourchance.mvc.screens.questionslist.questionslistitem.QuestionsListItemViewMvc;
+import com.techyourchance.mvc.screens.questionslist.questionslistitem.QuestionsListItemViewMvcImpl;
 
 public class ViewMvcFactory {
 
@@ -29,7 +29,7 @@ public class ViewMvcFactory {
     }
 
     public QuestionDetailsViewMvc getQuestionDetailsViewMvc(@Nullable ViewGroup parent) {
-        return new QuestionDetailsViewMvcImpl(mLayoutInflater, parent);
+        return new QuestionDetailsViewMvcImpl(mLayoutInflater, parent, this);
     }
 
     public ToolbarViewMvc getToolbarViewMvc(@Nullable ViewGroup parent) {
