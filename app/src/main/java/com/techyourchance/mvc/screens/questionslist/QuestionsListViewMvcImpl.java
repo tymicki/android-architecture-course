@@ -1,20 +1,18 @@
 package com.techyourchance.mvc.screens.questionslist;
 
-import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.techyourchance.mvc.R;
 import com.techyourchance.mvc.questions.Question;
 import com.techyourchance.mvc.screens.common.BaseObservableViewMvc;
-import com.techyourchance.mvc.screens.common.BaseViewMvc;
 import com.techyourchance.mvc.screens.common.ViewMvcFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionsListViewMvcImpl extends BaseObservableViewMvc<QuestionsListViewMvc.Listener>
@@ -22,6 +20,7 @@ public class QuestionsListViewMvcImpl extends BaseObservableViewMvc<QuestionsLis
 
     private RecyclerView mRecyclerQuestions;
     private QuestionsRecyclerAdapter mAdapter;
+    private final ProgressBar mProgressBar;
 
     public QuestionsListViewMvcImpl(LayoutInflater inflater, @Nullable ViewGroup parent, ViewMvcFactory viewMvcFactory) {
         setRootView(inflater.inflate(R.layout.layout_questions_list, parent, false));
@@ -30,6 +29,7 @@ public class QuestionsListViewMvcImpl extends BaseObservableViewMvc<QuestionsLis
         mRecyclerQuestions.setLayoutManager(new LinearLayoutManager(getContext()));
         mAdapter = new QuestionsRecyclerAdapter(this, viewMvcFactory);
         mRecyclerQuestions.setAdapter(mAdapter);
+        mProgressBar = findViewById(R.id.progress);
     }
 
     @Override
@@ -42,5 +42,15 @@ public class QuestionsListViewMvcImpl extends BaseObservableViewMvc<QuestionsLis
     @Override
     public void bindQuestions(List<Question> questions) {
         mAdapter.bindQuestions(questions);
+    }
+
+    @Override
+    public void showProgressIndication() {
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressIndication() {
+        mProgressBar.setVisibility(View.GONE);
     }
 }
