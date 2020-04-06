@@ -7,8 +7,10 @@ import java.util.List;
 
 public interface QuestionsListViewMvc extends ObservableViewMvc<QuestionsListViewMvc.Listener> {
 
-    public interface Listener {
+    interface Listener {
         void onQuestionClicked(Question question);
+
+        void onQuestionListClicked();
     }
 
     void bindQuestions(List<Question> questions);
