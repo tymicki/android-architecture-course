@@ -33,6 +33,7 @@ public class QuestionDetailsViewMvcImpl extends BaseViewMvc implements QuestionD
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             mTxtQuestionTitle.setText(Html.fromHtml(questionTitle, Html.FROM_HTML_MODE_LEGACY));
+            mTxtQuestionBody.setText(Html.fromHtml(questionBody, Html.FROM_HTML_MODE_LEGACY));
         } else {
             mTxtQuestionTitle.setText(Html.fromHtml(questionTitle));
             mTxtQuestionBody.setText(Html.fromHtml(questionBody));
