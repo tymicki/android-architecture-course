@@ -1,6 +1,5 @@
 package com.techyourchance.mvc.screens.questionslist;
 
-import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,11 +11,10 @@ import android.widget.ProgressBar;
 
 import com.techyourchance.mvc.R;
 import com.techyourchance.mvc.questions.Question;
+import com.techyourchance.mvc.screens.common.ViewMvcFactory;
 import com.techyourchance.mvc.screens.common.navdrawer.BaseNavDrawerViewMvc;
 import com.techyourchance.mvc.screens.common.navdrawer.DrawerItems;
 import com.techyourchance.mvc.screens.common.toolbar.ToolbarViewMvc;
-import com.techyourchance.mvc.screens.common.views.BaseObservableViewMvc;
-import com.techyourchance.mvc.screens.common.ViewMvcFactory;
 
 import java.util.List;
 
@@ -46,7 +44,19 @@ public class QuestionsListViewMvcImpl extends BaseNavDrawerViewMvc<QuestionsList
 
         mToolbar = findViewById(R.id.toolbar);
         mToolbarViewMvc = viewMvcFactory.getToolbarViewMvc(mToolbar);
+        initToolbar();
+
+    }
+
+    private void initToolbar() {
         mToolbarViewMvc.setTitle(getString(R.string.questions_list_screen_title));
+        mToolbarViewMvc.enableHamburgerButtonAndListen(new ToolbarViewMvc.HamburgerClickListener() {
+            @Override
+            public void onHamburgerClicked() {
+                openDrawer();
+            }
+        });
+
         mToolbar.addView(mToolbarViewMvc.getRootView());
     }
 
