@@ -7,8 +7,8 @@ import android.support.annotation.Nullable;
 
 import com.techyourchance.mvc.questions.FetchQuestionDetailsUseCase;
 import com.techyourchance.mvc.questions.QuestionDetails;
-import com.techyourchance.mvc.screens.common.BaseActivity;
-import com.techyourchance.mvc.screens.common.MessagesDisplayer;
+import com.techyourchance.mvc.screens.common.controllers.BaseActivity;
+import com.techyourchance.mvc.screens.common.toasthelper.ToastHelper;
 
 public class QuestionDetailsActivity extends BaseActivity implements FetchQuestionDetailsUseCase.Listener {
 
@@ -22,7 +22,7 @@ public class QuestionDetailsActivity extends BaseActivity implements FetchQuesti
 
     private FetchQuestionDetailsUseCase mFetchQuestionDetailsUseCase;
 
-    private MessagesDisplayer mMessagesDisplayer;
+    private ToastHelper mToastHelper;
 
     private QuestionDetailsViewMvc mViewMvc;
 
@@ -30,7 +30,7 @@ public class QuestionDetailsActivity extends BaseActivity implements FetchQuesti
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFetchQuestionDetailsUseCase = getCompositionRoot().getFetchQuestionDetailsUseCase();
-        mMessagesDisplayer = getCompositionRoot().getMessagesDisplayer();
+        mToastHelper = getCompositionRoot().getMessagesDisplayer();
         mViewMvc = getCompositionRoot().getViewMvcFactory().getQuestionDetailsViewMvc(null);
 
         setContentView(mViewMvc.getRootView());
@@ -68,6 +68,6 @@ public class QuestionDetailsActivity extends BaseActivity implements FetchQuesti
     @Override
     public void onQuestionDetailsFetchedFailed() {
         mViewMvc.hideProgressIndication();
-        mMessagesDisplayer.showUseCaseError();
+        mToastHelper.showUseCaseError();
     }
 }
